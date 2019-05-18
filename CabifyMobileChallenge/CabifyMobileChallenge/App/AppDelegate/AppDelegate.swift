@@ -8,14 +8,20 @@
 
 import UIKit
 
+import RxSwift
+import RxCocoa
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    private let apiClient = APIClient()
+    private let disposeBag = DisposeBag()
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
         return true
     }
 
