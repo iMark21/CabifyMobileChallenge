@@ -10,11 +10,9 @@ import Foundation
 import RxSwift
 
 class APIClient {
-    private let baseURL = URL(string: NetworkConstants.baseUrl)!
-    
     func send<T: Codable>(apiRequest: APIRequest) -> Observable<T> {
-        return Observable<T>.create { [unowned self] observer in
-            let request = apiRequest.request(with: self.baseURL)
+        return Observable<T>.create { observer in
+            let request = apiRequest.request(with: URL(string: NetworkConstants.baseUrl)!)
             let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
                 do {
                     let model: T = try JSONDecoder().decode(T.self, from: data ?? Data())

@@ -8,20 +8,20 @@
 
 import UIKit
 
-import RxSwift
-import RxCocoa
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow?
-    private let apiClient = APIClient()
-    private let disposeBag = DisposeBag()
-
+    var window: UIWindow? = UIWindow(frame:UIScreen.main.bounds)
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
+
+        if let currentWindow = self.window {
+            let appCoordinator : AppCoordinator = AppCoordinator (window: currentWindow)
+            appCoordinator.start()
+            currentWindow.makeKeyAndVisible()
+        }
+
         return true
     }
 
