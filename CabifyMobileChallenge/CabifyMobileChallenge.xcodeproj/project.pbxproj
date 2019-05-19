@@ -25,11 +25,12 @@
 		D0A006D12290C07B00A3473D /* UIViewController+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A006D02290C07B00A3473D /* UIViewController+extensions.swift */; };
 		D0A006D42290D95A00A3473D /* ProductsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A006D32290D95A00A3473D /* ProductsRepository.swift */; };
 		D0A006DC2291B38500A3473D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D0A006DE2291B38500A3473D /* Localizable.strings */; };
+		D0A006ED2291FA1800A3473D /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A006EC2291FA1800A3473D /* Calculator.swift */; };
 		D0A938E722902A7A002E1F23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A938E622902A7A002E1F23 /* AppDelegate.swift */; };
 		D0A938EC22902A7A002E1F23 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0A938EA22902A7A002E1F23 /* Main.storyboard */; };
 		D0A938EE22902A7D002E1F23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0A938ED22902A7D002E1F23 /* Assets.xcassets */; };
 		D0A938F122902A7D002E1F23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0A938EF22902A7D002E1F23 /* LaunchScreen.storyboard */; };
-		D0A938FC22902A7D002E1F23 /* CabifyMobileChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A938FB22902A7D002E1F23 /* CabifyMobileChallengeTests.swift */; };
+		D0A938FC22902A7D002E1F23 /* CalculatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A938FB22902A7D002E1F23 /* CalculatorTest.swift */; };
 		D0A9390722902A7D002E1F23 /* CabifyMobileChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A9390622902A7D002E1F23 /* CabifyMobileChallengeUITests.swift */; };
 		D0B6EA3622907D05000A9935 /* CabifyRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B6EA3522907D05000A9935 /* CabifyRequest.swift */; };
 		D0B6EA3822907D16000A9935 /* CabifyClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B6EA3722907D15000A9935 /* CabifyClient.swift */; };
@@ -78,6 +79,7 @@
 		D0A006D32290D95A00A3473D /* ProductsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsRepository.swift; sourceTree = "<group>"; };
 		D0A006DD2291B38500A3473D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D0A006DF2291B38900A3473D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D0A006EC2291FA1800A3473D /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
 		D0A938E322902A7A002E1F23 /* CabifyMobileChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CabifyMobileChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0A938E622902A7A002E1F23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0A938EB22902A7A002E1F23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -85,7 +87,7 @@
 		D0A938F022902A7D002E1F23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D0A938F222902A7D002E1F23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D0A938F722902A7D002E1F23 /* CabifyMobileChallengeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CabifyMobileChallengeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D0A938FB22902A7D002E1F23 /* CabifyMobileChallengeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CabifyMobileChallengeTests.swift; sourceTree = "<group>"; };
+		D0A938FB22902A7D002E1F23 /* CalculatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorTest.swift; sourceTree = "<group>"; };
 		D0A938FD22902A7D002E1F23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D0A9390222902A7D002E1F23 /* CabifyMobileChallengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CabifyMobileChallengeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0A9390622902A7D002E1F23 /* CabifyMobileChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CabifyMobileChallengeUITests.swift; sourceTree = "<group>"; };
@@ -262,6 +264,14 @@
 			path = Repository;
 			sourceTree = "<group>";
 		};
+		D0A006EB2291F9E200A3473D /* Calculator */ = {
+			isa = PBXGroup;
+			children = (
+				D0A006EC2291FA1800A3473D /* Calculator.swift */,
+			);
+			path = Calculator;
+			sourceTree = "<group>";
+		};
 		D0A938DA22902A7A002E1F23 = {
 			isa = PBXGroup;
 			children = (
@@ -303,7 +313,7 @@
 		D0A938FA22902A7D002E1F23 /* CabifyMobileChallengeTests */ = {
 			isa = PBXGroup;
 			children = (
-				D0A938FB22902A7D002E1F23 /* CabifyMobileChallengeTests.swift */,
+				D0A938FB22902A7D002E1F23 /* CalculatorTest.swift */,
 				D0A938FD22902A7D002E1F23 /* Info.plist */,
 			);
 			path = CabifyMobileChallengeTests;
@@ -339,6 +349,7 @@
 		D0B6EA302290730C000A9935 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				D0A006EB2291F9E200A3473D /* Calculator */,
 				D0A006B1229099D000A3473D /* Products */,
 			);
 			path = Modules;
@@ -656,6 +667,7 @@
 				D0A006B02290988900A3473D /* AppCoordinator.swift in Sources */,
 				D0A006C522909FD100A3473D /* ProductTableViewCell.swift in Sources */,
 				D0A006BA22909DEB00A3473D /* Storyboarded.swift in Sources */,
+				D0A006ED2291FA1800A3473D /* Calculator.swift in Sources */,
 				D0B6EA3622907D05000A9935 /* CabifyRequest.swift in Sources */,
 				D0B6EA3822907D16000A9935 /* CabifyClient.swift in Sources */,
 				D0A006CE2290BF7900A3473D /* ErrorViewController.swift in Sources */,
@@ -669,7 +681,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0A938FC22902A7D002E1F23 /* CabifyMobileChallengeTests.swift in Sources */,
+				D0A938FC22902A7D002E1F23 /* CalculatorTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

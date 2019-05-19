@@ -38,10 +38,9 @@ class ProductsViewController: UIViewController, Storyboarded {
     
     func configureCalculateView(){
         guard let viewModel = viewModel else {return}
-        viewModel.calculateTotal()
-        self.totalValueLabel.text = viewModel.totalString
-        self.subtotalLabel.text = viewModel.subtotalString
-        self.discountLabel.text = viewModel.discountString
+        self.totalValueLabel.text = viewModel.getTotalString()
+        self.subtotalLabel.text = viewModel.getSubtotalString()
+        self.discountLabel.text = viewModel.getDiscountString()
 
     }
     

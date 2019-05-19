@@ -19,22 +19,15 @@ enum ProductsViewState {
 
 class ProductsViewModel {
     private let repository : ProductsRepository
+    private let calculator : Calculator
     private let disposeBag = DisposeBag()
-    var viewModels : [ProductCellViewModel]
+    private var viewModels : [ProductCellViewModel]
     
-    //output
-    var state = PublishSubject<ProductsViewState>()
-    var totalString : String
-    var subtotalString : String
-    var discountString : String
-    
-    
-    init(repository : ProductsRepository) {
+    //input
+    init(repository : ProductsRepository, calculator : Calculator) {
         self.repository = repository
+        self.calculator = calculator
         viewModels = [ProductCellViewModel]()
-        totalString = "\(0)"
-        subtotalString = "\(0)"
-        discountString = "\(0)"
     }
     
     func requestData(){
@@ -51,7 +44,25 @@ class ProductsViewModel {
             }).disposed(by: disposeBag)
     }
     
-    func buildCellViewModels(data: Products) -> [ProductCellViewModel] {
+    //output
+    var state = PublishSubject<ProductsViewState>()
+    
+    func getTotalString() -> String {
+        let total = calculator.calculateTotal(purchase: buildTuplesForCalculator())
+        return NSLocalizedString("_total_", comment: "") + ": " + String(format: "%.2f", total)
+    }
+    
+    func getSubtotalString () -> String{
+        return NSLocalizedString("_subtotal_", comment: "") + ": " + String(format: "%.2f", calculator.calculateSubtotal(purchase: buildTuplesForCalculator()))
+    }
+    
+    func getDiscountString() -> String{
+        return NSLocalizedString("_discount_", comment: "") + ": " + String(format: "%.2f", calculator.calculateDiscounts(purchase: buildTuplesForCalculator()))
+    }
+    
+    // MARK: ViewModel comunicative methods
+    
+    private func buildCellViewModels(data: Products) -> [ProductCellViewModel] {
         var viewModels = [ProductCellViewModel]()
         for product in data.products {
             viewModels.append(ProductCellViewModel.init(product: product))
@@ -59,52 +70,20 @@ class ProductsViewModel {
         return viewModels
     }
     
-    // MARK: Calculator engine
-
-    func calculateTotal(){
-        let total = calculateSubtotal() + calculateDiscounts()
-        totalString = NSLocalizedString("_total_", comment: "") + ": " + String(format: "%.2f", total)
-    }
-    
-    private func calculateSubtotal() -> Double{
-        var subtotal = 0.0
+    private func buildTuplesForCalculator () -> [(product: Product, quantity: Int)]{
+        var result = [(product: Product, quantity: Int)]()
         for rowViewModel in viewModels {
             let price = Double(rowViewModel.price)
-            let quantity = Double(rowViewModel.quantity)
-            subtotal = subtotal + ((price ?? 0) * quantity)
+            let tuple = (Product.init(code: rowViewModel.code, name: rowViewModel.name, price: (price ?? 0)), rowViewModel.quantity)
+            result.append(tuple)
         }
-        subtotalString = NSLocalizedString("_subtotal_", comment: "") + ": " + String(format: "%.2f", subtotal)
-        return subtotal
+        return result
     }
     
-    private func calculateDiscounts() -> Double{
-        var discount = 0.0
-        //Tshirt discounts
-        if let tshirtRowViewModel = viewModels.filter({ $0.code == "TSHIRT" }).first {
-            if tshirtRowViewModel.quantity > 2 {
-                discount = Double(-tshirtRowViewModel.quantity)
-            }
-        }
-        //Voucher discounts
-        if let voucherRowViewModel = viewModels.filter({ $0.code == "VOUCHER" }).first {
-            let price = Double(voucherRowViewModel.price)
-            var quantity = Double(voucherRowViewModel.quantity)
-            if voucherRowViewModel.quantity % 2 == 0 {
-                discount = discount - (quantity/2 * (price ?? 0))
-            }else{
-                quantity = quantity - 1
-                if quantity > 0 {
-                    discount = discount - (quantity/2 * (price ?? 0))
-                }
-            }
-        }
-        discountString = NSLocalizedString("_discount_", comment: "") + ": " + String(format: "%.2f", discount)
-        return discount
-    }
+    // MARK: Calculator engine
     
     func resetCalculate(){
         viewModels = [ProductCellViewModel]()
-        calculateTotal()
     }
     
     func resetQuantities(){

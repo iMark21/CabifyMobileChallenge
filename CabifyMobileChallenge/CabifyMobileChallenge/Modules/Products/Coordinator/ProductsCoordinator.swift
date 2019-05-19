@@ -27,7 +27,8 @@ class ProductsCoordinator: CoordinatorProtocol {
     func start() {
         if let viewController = ProductsViewController.instantiate(){
             let repository = ProductsRepository.init()
-            let viewModel =  ProductsViewModel.init(repository: repository)
+            let calculator = Calculator.init()
+            let viewModel =  ProductsViewModel.init(repository: repository, calculator: calculator)
             viewController.viewModel = viewModel
             navigationController.pushViewController(viewController, animated: true)
         }
