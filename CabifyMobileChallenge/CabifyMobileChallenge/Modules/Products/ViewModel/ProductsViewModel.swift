@@ -20,7 +20,7 @@ enum ProductsViewState {
 class ProductsViewModel {
     private let repository : ProductsRepository
     private let disposeBag = DisposeBag()
-    private var viewModels : [ProductCellViewModel]
+    var viewModels : [ProductCellViewModel]
     
     //output
     var state = PublishSubject<ProductsViewState>()
@@ -63,7 +63,7 @@ class ProductsViewModel {
 
     func calculateTotal(){
         let total = calculateSubtotal() + calculateDiscounts()
-        totalString = NSLocalizedString("_total_", comment: "") + ": " + "\(total)"
+        totalString = NSLocalizedString("_total_", comment: "") + ": " + String(format: "%.2f", total)
     }
     
     private func calculateSubtotal() -> Double{
@@ -73,7 +73,7 @@ class ProductsViewModel {
             let quantity = Double(rowViewModel.quantity)
             subtotal = subtotal + ((price ?? 0) * quantity)
         }
-        subtotalString = NSLocalizedString("_subtotal_", comment: "") + ": " + "\(subtotal)"
+        subtotalString = NSLocalizedString("_subtotal_", comment: "") + ": " + String(format: "%.2f", subtotal)
         return subtotal
     }
     
@@ -98,7 +98,7 @@ class ProductsViewModel {
                 }
             }
         }
-        discountString = NSLocalizedString("_discount_", comment: "") + ": " + "\(discount)"
+        discountString = NSLocalizedString("_discount_", comment: "") + ": " + String(format: "%.2f", discount)
         return discount
     }
     

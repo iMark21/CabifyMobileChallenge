@@ -12,7 +12,8 @@ target 'CabifyMobileChallenge' do
 
   target 'CabifyMobileChallengeTests' do
     inherit! :search_paths
-    # Pods for testing
+    pod 'RxBlocking'
+    pod 'RxTest'
   end
 
   target 'CabifyMobileChallengeUITests' do

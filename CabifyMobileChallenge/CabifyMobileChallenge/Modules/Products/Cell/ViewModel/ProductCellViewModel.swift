@@ -23,7 +23,7 @@ class ProductCellViewModel {
     init(product: Product) {
         code = product.code
         name = product.name
-        price = String(product.price)
+        price = String(format: "%.2f", product.price)
         quantity = 0
     }
     
