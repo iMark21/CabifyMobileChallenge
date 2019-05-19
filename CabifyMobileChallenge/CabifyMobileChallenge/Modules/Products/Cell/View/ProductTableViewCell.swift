@@ -26,17 +26,25 @@ class ProductTableViewCell: UITableViewCell {
     
     public func setup (viewModel: ProductCellViewModel?){
         self.viewModel = viewModel
-        nameLabel?.text = viewModel?.name.uppercased()
-        priceLabel?.text = viewModel?.price
+        configureView()
+    }
+    
+    private func configureView(){
+        guard let viewModel = viewModel else {return}
+        nameLabel?.text = viewModel.name.uppercased()
+        priceLabel?.text = viewModel.price
+        unitsLabel?.text = "\(viewModel.quantity)"
     }
     
 
     @IBAction func addItemAction(_ sender: Any) {
         viewModel?.addProduct()
+        configureView()
     }
     
     @IBAction func deleteItemAction(_ sender: Any) {
         viewModel?.deleteProduct()
+        configureView()
     }
     
 }

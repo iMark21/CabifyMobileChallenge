@@ -15,21 +15,27 @@ class ProductCellViewModel {
     let code : String
     let name : String
     let price : String
+    var quantity : Int
     
     //output
-    var unitButtonTapped = PublishSubject<Bool>()
+    var unitButtonTapped = PublishSubject<Int>()
     
     init(product: Product) {
         code = product.code
         name = product.name
         price = String(product.price)
+        quantity = 0
     }
     
     func addProduct(){
-        unitButtonTapped.onNext(true)
+        quantity+=1
+        unitButtonTapped.onNext(quantity)
     }
     
     func deleteProduct(){
-        unitButtonTapped.onNext(false)
+        if quantity > 0{
+            quantity-=1
+        }
+        unitButtonTapped.onNext(quantity)
     }
 }

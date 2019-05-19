@@ -13,7 +13,10 @@ import RxCocoa
 class ProductsViewController: UIViewController, Storyboarded {
     
     @IBOutlet weak var tableView: UITableView!
-
+    @IBOutlet weak var totalValueLabel: UILabel!
+    @IBOutlet weak var subtotalLabel: UILabel!
+    @IBOutlet weak var discountLabel: UILabel!
+    
     var viewModel : ProductsViewModel?
     var cellViewModels : [ProductCellViewModel] = []
     let loadingViewController = LoadingViewController()
@@ -31,6 +34,15 @@ class ProductsViewController: UIViewController, Storyboarded {
         self.title = NSLocalizedString("", comment: "")
         configureNavBar()
         configureTableView()
+    }
+    
+    func configureCalculateView(){
+        guard let viewModel = viewModel else {return}
+        viewModel.calculateTotal()
+        self.totalValueLabel.text = viewModel.totalString
+        self.subtotalLabel.text = viewModel.subtotalString
+        self.discountLabel.text = viewModel.discountString
+
     }
     
     func configureNavBar(){
@@ -53,6 +65,7 @@ class ProductsViewController: UIViewController, Storyboarded {
                 self.cellViewModels = cellViewModels
                 self.tableView.isHidden = false
                 self.tableView.reloadData()
+                self.configureCalculateView()
                 self.errorViewController.remove()
                 self.loadingViewController.remove()
                 break
@@ -72,14 +85,14 @@ class ProductsViewController: UIViewController, Storyboarded {
         
     }
     
-    
     func requestData () {
         guard let vm = viewModel else {return}
         vm.requestData()
     }
     
     @objc func resetAction(){
-        
+        guard let vm = viewModel else {return}
+        vm.resetQuantities()
     }
     
     @objc func reloadAction(){
@@ -89,18 +102,22 @@ class ProductsViewController: UIViewController, Storyboarded {
 
 extension ProductsViewController : UITableViewDelegate, UITableViewDataSource {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView,
+                   numberOfRowsInSection section: Int) -> Int {
         return cellViewModels.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView,
+                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.ProductTableViewCell, for: indexPath)
         if let cell = cell as? ProductTableViewCell{
             let rowViewModel = cellViewModels[indexPath.row]
             cell.setup(viewModel: rowViewModel)
+            
             rowViewModel.unitButtonTapped
                 .asObserver()
-                .subscribe(onNext: { (add) in
+                .subscribe(onNext: { (quantity) in
+                    self.configureCalculateView()
                 }).disposed(by: disposeBag)
         }
         return cell

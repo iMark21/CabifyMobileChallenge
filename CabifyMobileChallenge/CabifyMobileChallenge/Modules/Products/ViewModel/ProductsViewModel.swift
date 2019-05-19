@@ -20,17 +20,26 @@ enum ProductsViewState {
 class ProductsViewModel {
     private let repository : ProductsRepository
     private let disposeBag = DisposeBag()
-    private var viewModels = [ProductCellViewModel]()
+    private var viewModels : [ProductCellViewModel]
     
     //output
     var state = PublishSubject<ProductsViewState>()
+    var totalString : String
+    var subtotalString : String
+    var discountString : String
+    
     
     init(repository : ProductsRepository) {
         self.repository = repository
+        viewModels = [ProductCellViewModel]()
+        totalString = "\(0)"
+        subtotalString = "\(0)"
+        discountString = "\(0)"
     }
     
     func requestData(){
         state.onNext(.loading)
+        resetCalculate()
         repository.fetchProducts()
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { (products : Products) in
@@ -49,4 +58,60 @@ class ProductsViewModel {
         }
         return viewModels
     }
+    
+    // MARK: Calculator engine
+
+    func calculateTotal(){
+        let total = calculateSubtotal() + calculateDiscounts()
+        totalString = "\(total)"
+    }
+    
+    private func calculateSubtotal() -> Double{
+        var subtotal = 0.0
+        for rowViewModel in viewModels {
+            let price = Double(rowViewModel.price)
+            let quantity = Double(rowViewModel.quantity)
+            subtotal = subtotal + ((price ?? 0) * quantity)
+        }
+        subtotalString = "\(subtotal)"
+        return subtotal
+    }
+    
+    private func calculateDiscounts() -> Double{
+        var discount = 0.0
+        //Tshirt discounts
+        if let tshirtRowViewModel = viewModels.filter({ $0.code == "TSHIRT" }).first {
+            if tshirtRowViewModel.quantity > 2 {
+                discount = Double(-tshirtRowViewModel.quantity)
+            }
+        }
+        //Voucher discounts
+        if let voucherRowViewModel = viewModels.filter({ $0.code == "VOUCHER" }).first {
+            let price = Double(voucherRowViewModel.price)
+            var quantity = Double(voucherRowViewModel.quantity)
+            if voucherRowViewModel.quantity % 2 == 0 {
+                discount = discount - (quantity/2 * (price ?? 0))
+            }else{
+                quantity = quantity - 1
+                if quantity > 0 {
+                    discount = discount - (quantity/2 * (price ?? 0))
+                }
+            }
+        }
+        discountString = "\(discount)"
+        return discount
+    }
+    
+    func resetCalculate(){
+        viewModels = [ProductCellViewModel]()
+        calculateTotal()
+    }
+    
+    func resetQuantities(){
+        for rowViewModel in viewModels {
+            rowViewModel.quantity = 0
+        }
+        self.state.onNext(.loaded(viewModels))
+    }
 }
+
