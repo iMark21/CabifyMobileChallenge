@@ -63,7 +63,7 @@ class ProductsViewModel {
 
     func calculateTotal(){
         let total = calculateSubtotal() + calculateDiscounts()
-        totalString = "\(total)"
+        totalString = NSLocalizedString("_total_", comment: "") + ": " + "\(total)"
     }
     
     private func calculateSubtotal() -> Double{
@@ -73,7 +73,7 @@ class ProductsViewModel {
             let quantity = Double(rowViewModel.quantity)
             subtotal = subtotal + ((price ?? 0) * quantity)
         }
-        subtotalString = "\(subtotal)"
+        subtotalString = NSLocalizedString("_subtotal_", comment: "") + ": " + "\(subtotal)"
         return subtotal
     }
     
@@ -98,7 +98,7 @@ class ProductsViewModel {
                 }
             }
         }
-        discountString = "\(discount)"
+        discountString = NSLocalizedString("_discount_", comment: "") + ": " + "\(discount)"
         return discount
     }
     

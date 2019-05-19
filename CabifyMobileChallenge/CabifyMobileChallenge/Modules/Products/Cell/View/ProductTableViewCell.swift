@@ -32,7 +32,7 @@ class ProductTableViewCell: UITableViewCell {
     private func configureView(){
         guard let viewModel = viewModel else {return}
         nameLabel?.text = viewModel.name.uppercased()
-        priceLabel?.text = viewModel.price
+        priceLabel?.text = NSLocalizedString("_price_", comment: "") + ": " + viewModel.price
         unitsLabel?.text = "\(viewModel.quantity)"
     }
     
