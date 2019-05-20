@@ -9,8 +9,10 @@
 /* Begin PBXBuildFile section */
 		239A871418EDD4BA3F85102A /* Pods_CabifyMobileChallengeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62476313D58082AD5F688708 /* Pods_CabifyMobileChallengeTests.framework */; };
 		9703B954BA4CAE77CF83D3FE /* Pods_CabifyMobileChallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 622A56828CA9366C13AD41D2 /* Pods_CabifyMobileChallenge.framework */; };
+		B835665F2292C12600661813 /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = B835665E2292C12600661813 /* Products.swift */; };
+		B83566612292C13200661813 /* Promotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83566602292C13200661813 /* Promotion.swift */; };
+		B83566632292C39300661813 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83566622292C39300661813 /* AppConstants.swift */; };
 		B848F57422929A8D004DAC66 /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = B848F57322929A8D004DAC66 /* Mocks.swift */; };
-		C946D1D14F87DAD15BA05143 /* Pods_CabifyMobileChallengeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFFF2C0C6F49FA99F0D782DC /* Pods_CabifyMobileChallengeUITests.framework */; };
 		D0A006AE2290987D00A3473D /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A006AD2290987D00A3473D /* CoordinatorProtocol.swift */; };
 		D0A006B02290988900A3473D /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A006AF2290988900A3473D /* AppCoordinator.swift */; };
 		D0A006B622909ACC00A3473D /* ProductsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A006B522909ACC00A3473D /* ProductsCoordinator.swift */; };
@@ -33,23 +35,14 @@
 		D0A938EE22902A7D002E1F23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0A938ED22902A7D002E1F23 /* Assets.xcassets */; };
 		D0A938F122902A7D002E1F23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0A938EF22902A7D002E1F23 /* LaunchScreen.storyboard */; };
 		D0A938FC22902A7D002E1F23 /* CalculatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A938FB22902A7D002E1F23 /* CalculatorTest.swift */; };
-		D0A9390722902A7D002E1F23 /* CabifyMobileChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A9390622902A7D002E1F23 /* CabifyMobileChallengeUITests.swift */; };
 		D0B6EA3622907D05000A9935 /* CabifyRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B6EA3522907D05000A9935 /* CabifyRequest.swift */; };
 		D0B6EA3822907D16000A9935 /* CabifyClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B6EA3722907D15000A9935 /* CabifyClient.swift */; };
 		D0B6EA3A22907F23000A9935 /* ProductsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B6EA3922907F23000A9935 /* ProductsRequest.swift */; };
 		D0B6EA3C2290860A000A9935 /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B6EA3B2290860A000A9935 /* NetworkConstants.swift */; };
-		D0B6EA3E22908A6E000A9935 /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B6EA3D22908A6E000A9935 /* Products.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		D0A938F822902A7D002E1F23 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D0A938DB22902A7A002E1F23 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D0A938E222902A7A002E1F23;
-			remoteInfo = CabifyMobileChallenge;
-		};
-		D0A9390322902A7D002E1F23 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D0A938DB22902A7A002E1F23 /* Project object */;
 			proxyType = 1;
@@ -64,6 +57,9 @@
 		62476313D58082AD5F688708 /* Pods_CabifyMobileChallengeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CabifyMobileChallengeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A17E52E009621DF9D5A6FF2B /* Pods-CabifyMobileChallengeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CabifyMobileChallengeUITests.release.xcconfig"; path = "Target Support Files/Pods-CabifyMobileChallengeUITests/Pods-CabifyMobileChallengeUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A88A6D5664A5031C58CC2219 /* Pods-CabifyMobileChallengeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CabifyMobileChallengeTests.release.xcconfig"; path = "Target Support Files/Pods-CabifyMobileChallengeTests/Pods-CabifyMobileChallengeTests.release.xcconfig"; sourceTree = "<group>"; };
+		B835665E2292C12600661813 /* Products.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
+		B83566602292C13200661813 /* Promotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promotion.swift; sourceTree = "<group>"; };
+		B83566622292C39300661813 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		B848F57322929A8D004DAC66 /* Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
 		B8D789B0637DA3EBB6921A3C /* Pods-CabifyMobileChallenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CabifyMobileChallenge.release.xcconfig"; path = "Target Support Files/Pods-CabifyMobileChallenge/Pods-CabifyMobileChallenge.release.xcconfig"; sourceTree = "<group>"; };
 		D0A006AD2290987D00A3473D /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
@@ -93,14 +89,12 @@
 		D0A938F722902A7D002E1F23 /* CabifyMobileChallengeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CabifyMobileChallengeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0A938FB22902A7D002E1F23 /* CalculatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorTest.swift; sourceTree = "<group>"; };
 		D0A938FD22902A7D002E1F23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D0A9390222902A7D002E1F23 /* CabifyMobileChallengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CabifyMobileChallengeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0A9390622902A7D002E1F23 /* CabifyMobileChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CabifyMobileChallengeUITests.swift; sourceTree = "<group>"; };
 		D0A9390822902A7D002E1F23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D0B6EA3522907D05000A9935 /* CabifyRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CabifyRequest.swift; sourceTree = "<group>"; };
 		D0B6EA3722907D15000A9935 /* CabifyClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CabifyClient.swift; sourceTree = "<group>"; };
 		D0B6EA3922907F23000A9935 /* ProductsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsRequest.swift; sourceTree = "<group>"; };
 		D0B6EA3B2290860A000A9935 /* NetworkConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstants.swift; sourceTree = "<group>"; };
-		D0B6EA3D22908A6E000A9935 /* Products.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Products.swift; path = ../Products.swift; sourceTree = "<group>"; };
 		E19875E6C19A53AECCBA7123 /* Pods-CabifyMobileChallenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CabifyMobileChallenge.debug.xcconfig"; path = "Target Support Files/Pods-CabifyMobileChallenge/Pods-CabifyMobileChallenge.debug.xcconfig"; sourceTree = "<group>"; };
 		E81927E2B032E8D6661C02F7 /* Pods-CabifyMobileChallengeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CabifyMobileChallengeTests.debug.xcconfig"; path = "Target Support Files/Pods-CabifyMobileChallengeTests/Pods-CabifyMobileChallengeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		EFFF2C0C6F49FA99F0D782DC /* Pods_CabifyMobileChallengeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CabifyMobileChallengeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,14 +114,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				239A871418EDD4BA3F85102A /* Pods_CabifyMobileChallengeTests.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D0A938FF22902A7D002E1F23 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C946D1D14F87DAD15BA05143 /* Pods_CabifyMobileChallengeUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,6 +141,15 @@
 				EFFF2C0C6F49FA99F0D782DC /* Pods_CabifyMobileChallengeUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B835665D2292C12600661813 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				B835665E2292C12600661813 /* Products.swift */,
+				B83566602292C13200661813 /* Promotion.swift */,
+			);
+			path = Entities;
 			sourceTree = "<group>";
 		};
 		B848F57622929DCC004DAC66 /* Products */ = {
@@ -317,7 +312,6 @@
 			children = (
 				D0A938E322902A7A002E1F23 /* CabifyMobileChallenge.app */,
 				D0A938F722902A7D002E1F23 /* CabifyMobileChallengeTests.xctest */,
-				D0A9390222902A7D002E1F23 /* CabifyMobileChallengeUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -330,7 +324,7 @@
 				D0B6EA3222907340000A9935 /* Layout */,
 				D0B6EA302290730C000A9935 /* Modules */,
 				D0B6EA3322907371000A9935 /* Network */,
-				D0B6EA3422907385000A9935 /* Entities */,
+				B835665D2292C12600661813 /* Entities */,
 				D0A938ED22902A7D002E1F23 /* Assets.xcassets */,
 				D0A938EF22902A7D002E1F23 /* LaunchScreen.storyboard */,
 				D0A938F222902A7D002E1F23 /* Info.plist */,
@@ -391,6 +385,7 @@
 				D0A006CF2290C05400A3473D /* Extensions */,
 				D0A006CC2290BF6900A3473D /* Error */,
 				D0A006C92290BF5300A3473D /* Loading */,
+				B83566622292C39300661813 /* AppConstants.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -416,14 +411,6 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		D0B6EA3422907385000A9935 /* Entities */ = {
-			isa = PBXGroup;
-			children = (
-				D0B6EA3D22908A6E000A9935 /* Products.swift */,
-			);
-			path = Entities;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -436,7 +423,6 @@
 				D0A938E022902A7A002E1F23 /* Frameworks */,
 				D0A938E122902A7A002E1F23 /* Resources */,
 				19C2B3959A23C44AAB2DF568 /* [CP] Embed Pods Frameworks */,
-				B848F5792292A2EE004DAC66 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -467,25 +453,6 @@
 			productReference = D0A938F722902A7D002E1F23 /* CabifyMobileChallengeTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		D0A9390122902A7D002E1F23 /* CabifyMobileChallengeUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D0A9391122902A7D002E1F23 /* Build configuration list for PBXNativeTarget "CabifyMobileChallengeUITests" */;
-			buildPhases = (
-				3BC95FBCB3BE68FCBCEF2514 /* [CP] Check Pods Manifest.lock */,
-				D0A938FE22902A7D002E1F23 /* Sources */,
-				D0A938FF22902A7D002E1F23 /* Frameworks */,
-				D0A9390022902A7D002E1F23 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D0A9390422902A7D002E1F23 /* PBXTargetDependency */,
-			);
-			name = CabifyMobileChallengeUITests;
-			productName = CabifyMobileChallengeUITests;
-			productReference = D0A9390222902A7D002E1F23 /* CabifyMobileChallengeUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -500,10 +467,6 @@
 						CreatedOnToolsVersion = 10.2;
 					};
 					D0A938F622902A7D002E1F23 = {
-						CreatedOnToolsVersion = 10.2;
-						TestTargetID = D0A938E222902A7A002E1F23;
-					};
-					D0A9390122902A7D002E1F23 = {
 						CreatedOnToolsVersion = 10.2;
 						TestTargetID = D0A938E222902A7A002E1F23;
 					};
@@ -525,7 +488,6 @@
 			targets = (
 				D0A938E222902A7A002E1F23 /* CabifyMobileChallenge */,
 				D0A938F622902A7D002E1F23 /* CabifyMobileChallengeTests */,
-				D0A9390122902A7D002E1F23 /* CabifyMobileChallengeUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -544,13 +506,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D0A938F522902A7D002E1F23 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D0A9390022902A7D002E1F23 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -584,28 +539,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CabifyMobileChallenge/Pods-CabifyMobileChallenge-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		3BC95FBCB3BE68FCBCEF2514 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-CabifyMobileChallengeUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		7A18D2D6F4902D95BCA1B816 /* [CP] Embed Pods Frameworks */ = {
@@ -678,23 +611,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B848F5792292A2EE004DAC66 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -705,6 +621,8 @@
 				D0A006AE2290987D00A3473D /* CoordinatorProtocol.swift in Sources */,
 				D0A938E722902A7A002E1F23 /* AppDelegate.swift in Sources */,
 				D0A006B622909ACC00A3473D /* ProductsCoordinator.swift in Sources */,
+				B83566632292C39300661813 /* AppConstants.swift in Sources */,
+				B83566612292C13200661813 /* Promotion.swift in Sources */,
 				D0A006CB2290BF6400A3473D /* LoadingViewController.swift in Sources */,
 				D0A006BE22909EC200A3473D /* ProductsViewModel.swift in Sources */,
 				D0A006C82290A03800A3473D /* ProductCellViewModel.swift in Sources */,
@@ -719,9 +637,9 @@
 				D0B6EA3622907D05000A9935 /* CabifyRequest.swift in Sources */,
 				D0B6EA3822907D16000A9935 /* CabifyClient.swift in Sources */,
 				D0A006CE2290BF7900A3473D /* ErrorViewController.swift in Sources */,
+				B835665F2292C12600661813 /* Products.swift in Sources */,
 				D0A006D12290C07B00A3473D /* UIViewController+extensions.swift in Sources */,
 				D0A006D42290D95A00A3473D /* ProductsRepository.swift in Sources */,
-				D0B6EA3E22908A6E000A9935 /* Products.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -735,14 +653,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D0A938FE22902A7D002E1F23 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D0A9390722902A7D002E1F23 /* CabifyMobileChallengeUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -750,11 +660,6 @@
 			isa = PBXTargetDependency;
 			target = D0A938E222902A7A002E1F23 /* CabifyMobileChallenge */;
 			targetProxy = D0A938F822902A7D002E1F23 /* PBXContainerItemProxy */;
-		};
-		D0A9390422902A7D002E1F23 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D0A938E222902A7A002E1F23 /* CabifyMobileChallenge */;
-			targetProxy = D0A9390322902A7D002E1F23 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -987,48 +892,6 @@
 			};
 			name = Release;
 		};
-		D0A9391222902A7D002E1F23 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 38D7892D4995455874C4FC90 /* Pods-CabifyMobileChallengeUITests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = J98FW8N44Z;
-				INFOPLIST_FILE = CabifyMobileChallengeUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.imark21.CabifyMobileChallengeUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = CabifyMobileChallenge;
-			};
-			name = Debug;
-		};
-		D0A9391322902A7D002E1F23 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = A17E52E009621DF9D5A6FF2B /* Pods-CabifyMobileChallengeUITests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = J98FW8N44Z;
-				INFOPLIST_FILE = CabifyMobileChallengeUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.imark21.CabifyMobileChallengeUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = CabifyMobileChallenge;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1055,15 +918,6 @@
 			buildConfigurations = (
 				D0A9390F22902A7D002E1F23 /* Debug */,
 				D0A9391022902A7D002E1F23 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D0A9391122902A7D002E1F23 /* Build configuration list for PBXNativeTarget "CabifyMobileChallengeUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D0A9391222902A7D002E1F23 /* Debug */,
-				D0A9391322902A7D002E1F23 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

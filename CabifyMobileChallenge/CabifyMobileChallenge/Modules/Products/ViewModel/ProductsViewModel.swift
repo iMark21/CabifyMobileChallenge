@@ -22,12 +22,14 @@ class ProductsViewModel {
     private let calculator: Calculator
     private let disposeBag = DisposeBag()
     private var viewModels: [ProductCellViewModel]
+    private var promotions: [Promotion]
 
     //input
     init(repository: ProductsRepository, calculator: Calculator) {
         self.repository = repository
         self.calculator = calculator
         viewModels = [ProductCellViewModel]()
+        promotions = [Promotion]()
     }
 
     func requestData() {
@@ -40,7 +42,15 @@ class ProductsViewModel {
             }, onError: { (error) in
                 self.state.onNext(.error)
             }, onCompleted: {
-                self.state.onNext(.loaded(self.viewModels))
+                self.repository.fetchPromotions()
+                    .observeOn(MainScheduler.instance)
+                    .subscribe(onNext: { (result) in
+                        self.promotions = result
+                    }, onError: { (error) in
+                        self.state.onNext(.error)
+                    }, onCompleted: {
+                        self.state.onNext(.loaded(self.viewModels))
+                    }).disposed(by: self.disposeBag)
             }).disposed(by: disposeBag)
     }
 
@@ -80,13 +90,18 @@ class ProductsViewModel {
         var result = [(product: Product, quantity: Int)]()
         for rowViewModel in viewModels {
             let price = Double(rowViewModel.price)
+            let promotionsToApply = getPromotions(promotions: promotions, rowViewModel: rowViewModel)
             let tuple = (Product.init(code: rowViewModel.code,
                                       name: rowViewModel.name,
-                                      price: (price ?? 0)),
-                         rowViewModel.quantity)
+                                      price: (price ?? 0),
+                                      promotions: promotionsToApply), rowViewModel.quantity)
             result.append(tuple)
         }
         return result
+    }
+    
+    func getPromotions(promotions: [Promotion], rowViewModel: ProductCellViewModel) -> [Promotion] {
+        return promotions.filter { $0.productCodeApply.elementsEqual(rowViewModel.code) }
     }
 
     // MARK: Calculator engine

@@ -19,9 +19,25 @@ class CalculatorTest: XCTestCase {
 
     override func setUp() {
         calculator = Calculator()
-        voucherProduct = (Product.init(code: "VOUCHER", name: "Voucher", price: 5.0))
-        tshirtProduct = (Product.init(code: "TSHIRT", name: "Voucher", price: 20.0))
-        mugProduct = (Product.init(code: "MUG", name: "Mug", price: 7.5))
+
+        let promotion2x1Voucher = Promotion.init(promotionCode: PromotionType.promotion2x1,
+                                                 productCodeApply: AppConstants.Products.voucherCode)
+        
+        let promotionQuantityTshirt = Promotion.init(promotionCode: PromotionType.promotionQuantity,
+                                                     productCodeApply: AppConstants.Products.tshirtCode)
+
+        voucherProduct = (Product.init(code: AppConstants.Products.voucherCode,
+                                       name: "Voucher",
+                                       price: 5.0,
+                                       promotions: [promotion2x1Voucher]))
+        tshirtProduct = (Product.init(code: AppConstants.Products.tshirtCode,
+                                      name: "Tshirt",
+                                      price: 20.0,
+                                      promotions: [promotionQuantityTshirt]))
+        mugProduct = (Product.init(code: AppConstants.Products.mugCode,
+                                   name: "Mug",
+                                   price: 7.5,
+                                   promotions: []))
     }
 
     override func tearDown() {

@@ -18,23 +18,14 @@ class ProductsViewModelTest: XCTestCase {
 
     private var viewModel: ProductsViewModel!
     private var products: Products!
+    private var promotions: [Promotion]!
     private var disposeBag: DisposeBag!
 
     override func setUp() {
         disposeBag = DisposeBag()
         viewModel = ProductsViewModel.init(repository: MockRepository(), calculator: Calculator())
-
-        let voucherProduct = Product.init(code: "VOUCHER",
-                                          name: "Cabify Voucher",
-                                          price: 5.0)
-        let tshirtProduct = Product.init(code: "TSHIRT",
-                                         name: "Cabify T-Shirt",
-                                         price: 20.0)
-        let mugProduct = Product.init(code: "MUG",
-                                      name: "Cabify Coffee Mug",
-                                      price: 7.5)
-
-        products = Products.init(products: [voucherProduct, tshirtProduct, mugProduct])
+        promotions = try! MockRepository().fetchPromotions().toBlocking().first()
+        products = Products.init(products: try! MockRepository().fetchProducts().toBlocking().first()?.products ?? [])
     }
 
     override func tearDown() {
@@ -45,7 +36,7 @@ class ProductsViewModelTest: XCTestCase {
     func testViewModelInit() {
         XCTAssertNotNil(viewModel)
     }
-
+    
     func testBuildProductCellViewModel() {
         //Given products build cellViewModels
         let viewCellModels = viewModel.buildCellViewModels(data: products)
@@ -56,12 +47,26 @@ class ProductsViewModelTest: XCTestCase {
         XCTAssertTrue(viewCellModels[1].code == products.products[1].code)
         XCTAssertTrue(viewCellModels[2].code == products.products[2].code)
     }
+    
 
-    func testBuildTuples() {
+    func testProperlyAssigned() {
+        //Given products build cellviewmodels
+        let viewCellModels = viewModel.buildCellViewModels(data: products)
+        
+        for rowViewModel in viewCellModels{
+            let promotionsToApply = viewModel.getPromotions(promotions: promotions, rowViewModel: rowViewModel)
+            //Check is productCodeToApply is the correct one
+            for promotion in promotionsToApply {
+                XCTAssertEqual(promotion.productCodeApply, rowViewModel.code)
+            }
+        }
+    }
+    
+    func correctAssignPromotions() {
         //Given products build tuples for calculator
         let viewCellModels = viewModel.buildCellViewModels(data: products)
         let tuples = viewModel.buildTuplesForCalculator(viewModels: viewCellModels)
-
+        
         //Then compare if number of items is the same
         XCTAssertEqual(viewCellModels.count, tuples.count)
     }

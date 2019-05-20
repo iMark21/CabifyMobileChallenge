@@ -33,24 +33,28 @@ class Calculator {
             let price = Double(tuple.product.price)
             var quantity = tuple.quantity
 
-            //Voucher discounts
-            if tuple.product.code == "VOUCHER" {
-                if quantity % 2 == 0 {
-                    discount -= (Double(quantity/2) * price)
-                } else {
-                    quantity -=  1
-                    if quantity > 0 {
-                        discount -= (Double(quantity/2)  * price)
+            if let promotions = tuple.product.promotions {
+                for promotion in promotions {
+                    switch promotion.promotionCode {
+                    case PromotionType.promotion2x1:
+                        if quantity % 2 == 0 {
+                            discount -= (Double(quantity/2) * price)
+                        } else {
+                            quantity -=  1
+                            if quantity > 0 {
+                                discount -= (Double(quantity/2)  * price)
+                            }
+                        }
+                    case PromotionType.promotionQuantity:
+                        if quantity > 2 {
+                            discount -= Double(quantity)
+                        }
+                    default:
+                        break
                     }
                 }
             }
-
-            //Tshirt discounts
-            if tuple.product.code == "TSHIRT" {
-                if quantity > 2 {
-                    discount -= Double(quantity)
-                }
-            }
+            
         }
         return discount
     }

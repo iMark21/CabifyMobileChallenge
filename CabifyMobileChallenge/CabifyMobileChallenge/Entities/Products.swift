@@ -20,10 +20,12 @@ struct Product: Codable {
     let code: String
     let name: String
     let price: Double
+    let promotions: [Promotion]?
 
     private enum Codingkeys: String, CodingKey {
         case code
         case name
         case price
+        case promotions
     }
 }
