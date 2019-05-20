@@ -48,21 +48,21 @@ class ProductsViewModel {
     var state = PublishSubject<ProductsViewState>()
     
     func getTotalString() -> String {
-        let total = calculator.calculateTotal(purchase: buildTuplesForCalculator())
+        let total = calculator.calculateTotal(purchase: buildTuplesForCalculator(viewModels: viewModels))
         return NSLocalizedString("_total_", comment: "") + ": " + String(format: "%.2f", total)
     }
     
     func getSubtotalString () -> String{
-        return NSLocalizedString("_subtotal_", comment: "") + ": " + String(format: "%.2f", calculator.calculateSubtotal(purchase: buildTuplesForCalculator()))
+        return NSLocalizedString("_subtotal_", comment: "") + ": " + String(format: "%.2f", calculator.calculateSubtotal(purchase: buildTuplesForCalculator(viewModels: viewModels)))
     }
     
     func getDiscountString() -> String{
-        return NSLocalizedString("_discount_", comment: "") + ": " + String(format: "%.2f", calculator.calculateDiscounts(purchase: buildTuplesForCalculator()))
+        return NSLocalizedString("_discount_", comment: "") + ": " + String(format: "%.2f", calculator.calculateDiscounts(purchase: buildTuplesForCalculator(viewModels: viewModels)))
     }
     
     // MARK: ViewModel comunicative methods
     
-    private func buildCellViewModels(data: Products) -> [ProductCellViewModel] {
+    func buildCellViewModels(data: Products) -> [ProductCellViewModel] {
         var viewModels = [ProductCellViewModel]()
         for product in data.products {
             viewModels.append(ProductCellViewModel.init(product: product))
@@ -70,7 +70,7 @@ class ProductsViewModel {
         return viewModels
     }
     
-    private func buildTuplesForCalculator () -> [(product: Product, quantity: Int)]{
+    func buildTuplesForCalculator (viewModels: [ProductCellViewModel]) -> [(product: Product, quantity: Int)]{
         var result = [(product: Product, quantity: Int)]()
         for rowViewModel in viewModels {
             let price = Double(rowViewModel.price)

@@ -7,10 +7,6 @@
 //
 
 import XCTest
-import RxBlocking
-import RxCocoa
-import RxSwift
-import RxTest
 
 @testable import CabifyMobileChallenge
 
@@ -21,7 +17,6 @@ class CalculatorTest: XCTestCase {
     private var tshirtProduct : Product!
     private var mugProduct : Product!
 
-    
     override func setUp() {
         calculator = Calculator()
         voucherProduct = (Product.init(code: "VOUCHER", name: "Voucher", price: 5.0))
@@ -33,6 +28,19 @@ class CalculatorTest: XCTestCase {
         calculator = nil
         
         super.tearDown()
+    }
+    
+    func testCalculatorlInit(){
+        XCTAssertTrue(calculator != nil)
+    }
+    
+    func testNoBuyProducts(){
+        var tuples = [(product: Product, quantity: Int)]()
+        tuples.append((product: tshirtProduct, quantity: 0))
+        tuples.append((product: voucherProduct, quantity: 0))
+        tuples.append((product: mugProduct, quantity: 0))
+        let total = calculator.calculateTotal(purchase: tuples)
+        XCTAssertTrue(total == 0)
     }
     
     func testBuy1voucher1tshirt1mug(){
@@ -60,6 +68,13 @@ class CalculatorTest: XCTestCase {
         XCTAssertTrue(discountApplied == -5.0)
     }
     
+    func testDiscount6Voucher() {
+        var tuples = [(product: Product, quantity: Int)]()
+        tuples.append((product: voucherProduct, quantity: 6))
+        let discountApplied = calculator.calculateDiscounts(purchase: tuples)
+        XCTAssertTrue(discountApplied == -15.0)
+    }
+    
     func testDiscount3Tshirt() {
         var tuples = [(product: Product, quantity: Int)]()
         tuples.append((product: tshirtProduct, quantity: 3))
@@ -74,6 +89,22 @@ class CalculatorTest: XCTestCase {
         let discountApplied = calculator.calculateDiscounts(purchase: tuples)
         XCTAssertTrue(discountApplied == -8.0)
     }
+    
+    func testNoDiscountMugQuantity() {
+        var tuples = [(product: Product, quantity: Int)]()
+        tuples.append((product: mugProduct, quantity: 30))
+        let discountApplied = calculator.calculateDiscounts(purchase: tuples)
+        XCTAssertTrue(discountApplied == 0)
+    }
 
+    func testNoDiscountMug2x1() {
+        var tuples = [(product: Product, quantity: Int)]()
+        tuples.append((product: mugProduct, quantity: 2))
+        let discountApplied = calculator.calculateDiscounts(purchase: tuples)
+        XCTAssertTrue(discountApplied == 0)
+        
+        let total = calculator.calculateTotal(purchase: tuples)
+        XCTAssertTrue(total == mugProduct.price * 2)
+    }
     
 }

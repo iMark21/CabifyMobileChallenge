@@ -6,6 +6,10 @@
   
 */
 
+"_title_error_message" = "Ooops!";
+"_description_error_message" = "We are having some problems. Please try again later";
+"_button_error_message" = "OK";
+"_title_products" = "Cabify Market";
 "_total_" = "Total";
 "_subtotal_" = "Subtotal";
 "_discount_" = "Discount applied";

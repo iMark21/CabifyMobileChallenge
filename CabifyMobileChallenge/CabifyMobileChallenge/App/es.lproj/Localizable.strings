@@ -6,6 +6,10 @@
   
 */
 
+"_title_error_message" = "Lo sentimos";
+"_description_error_message" = "Estamos experimentando algunos problemas. Inténtelo más tarde";
+"_button_error_message" = "OK";
+"_title_products" = "Tienda Cabify";
 "_total_" = "Total";
 "_subtotal_" = "Subtotal";
 "_discount_" = "Descuento aplicado";

@@ -25,6 +25,7 @@ class AppCoordinator: CoordinatorProtocol {
     init(window: UIWindow) {
         self.window = window
         navigationController = UINavigationController()
+        navigationController.navigationBar.prefersLargeTitles = true
         self.window.rootViewController = navigationController
     }
     

@@ -31,7 +31,7 @@ class ProductsViewController: UIViewController, Storyboarded {
     }
     
     func configureView (){
-        self.title = NSLocalizedString("", comment: "")
+        self.title = NSLocalizedString("_title_products", comment: "")
         configureNavBar()
         configureTableView()
     }
@@ -41,18 +41,24 @@ class ProductsViewController: UIViewController, Storyboarded {
         self.totalValueLabel.text = viewModel.getTotalString()
         self.subtotalLabel.text = viewModel.getSubtotalString()
         self.discountLabel.text = viewModel.getDiscountString()
-
     }
     
     func configureNavBar(){
-        let resetBar = UIBarButtonItem(barButtonSystemItem: .action , target: self, action: #selector(resetAction))
-        let reloadBar = UIBarButtonItem(barButtonSystemItem: .refresh , target: self, action: #selector(reloadAction))
+        let resetBar = UIBarButtonItem(barButtonSystemItem: .trash ,
+                                       target: self,
+                                       action: #selector(resetAction))
+        let reloadBar = UIBarButtonItem(barButtonSystemItem: .refresh,
+                                        target: self,
+                                        action: #selector(reloadAction))
         navigationItem.rightBarButtonItem = reloadBar
         navigationItem.leftBarButtonItem = resetBar
     }
     
     func configureTableView(){
-        tableView.register(UINib(nibName: CellIdentifiers.ProductTableViewCell, bundle: nil), forCellReuseIdentifier: CellIdentifiers.ProductTableViewCell)
+        tableView
+            .register(UINib(nibName: CellIdentifiers.ProductTableViewCell,
+                                 bundle: nil),
+                           forCellReuseIdentifier: CellIdentifiers.ProductTableViewCell)
     }
     
     func setupViewModel(){
@@ -62,14 +68,12 @@ class ProductsViewController: UIViewController, Storyboarded {
             switch state{
             case .loaded(let cellViewModels):                
                 self.cellViewModels = cellViewModels
-                self.tableView.isHidden = false
                 self.tableView.reloadData()
                 self.configureCalculateView()
                 self.errorViewController.remove()
                 self.loadingViewController.remove()
                 break
             case .loading:
-                self.tableView.isHidden = true
                 self.errorViewController.remove()
                 self.add(child: self.loadingViewController)
                 break
@@ -108,11 +112,12 @@ extension ProductsViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.ProductTableViewCell, for: indexPath)
+        let cell = tableView
+            .dequeueReusableCell(withIdentifier: CellIdentifiers.ProductTableViewCell,
+                                 for: indexPath)
         if let cell = cell as? ProductTableViewCell{
             let rowViewModel = cellViewModels[indexPath.row]
             cell.setup(viewModel: rowViewModel)
-            
             rowViewModel.unitButtonTapped
                 .asObserver()
                 .subscribe(onNext: { (quantity) in

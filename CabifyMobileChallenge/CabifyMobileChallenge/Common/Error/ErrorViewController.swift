@@ -6,25 +6,51 @@
 //  Copyright © 2019 Míchel Marqués Morilla. All rights reserved.
 //
 
+import Foundation
 import UIKit
+import RxSwift
+import RxCocoa
+
+struct AlertAction {
+    let buttonTitle: String
+    let handler: (() -> Void)?
+}
+
+struct SingleButtonAlert {
+    let title: String
+    let message: String?
+    let action: AlertAction
+}
 
 class ErrorViewController: UIViewController {
-
+    
+    var reloadDataAction = BehaviorRelay<Bool>(value: false)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.showError()
     }
-    */
-
+    
+    func showError(){
+        let action = AlertAction(buttonTitle: NSLocalizedString("_button_error_message", comment: ""), handler: {
+            self.reloadDataAction.accept(true)
+        })
+        let alert = SingleButtonAlert(title: NSLocalizedString("_title_error_message", comment: ""), message: NSLocalizedString("_description_error_message", comment: ""), action: action)
+        self.setShowError(alert: alert)
+    }
+    
+    func setShowError(alert:SingleButtonAlert) {
+        let alertController = UIAlertController(title: alert.title,
+                                                message: alert.message,
+                                                preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: alert.action.buttonTitle,
+                                                style: .default,
+                                                handler: { _ in alert.action.handler?() }))
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
 }
