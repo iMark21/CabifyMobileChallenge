@@ -152,6 +152,14 @@
 			path = Entities;
 			sourceTree = "<group>";
 		};
+		B83566642292EBD000661813 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D0A006EB2291F9E200A3473D /* Calculator */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		B848F57622929DCC004DAC66 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -188,6 +196,7 @@
 		D0A006B1229099D000A3473D /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				B83566642292EBD000661813 /* Model */,
 				D0A006D22290D94C00A3473D /* Repository */,
 				D0A006BF22909F0000A3473D /* Cell */,
 				D0A006B422909A0100A3473D /* Coordinator */,
@@ -373,7 +382,6 @@
 		D0B6EA302290730C000A9935 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				D0A006EB2291F9E200A3473D /* Calculator */,
 				D0A006B1229099D000A3473D /* Products */,
 			);
 			path = Modules;

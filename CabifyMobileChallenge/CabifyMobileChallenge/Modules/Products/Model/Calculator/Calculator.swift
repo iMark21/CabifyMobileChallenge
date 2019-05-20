@@ -11,6 +11,7 @@ import Foundation
 class Calculator {
 
     // MARK: Calculator engine
+    
     func calculateTotal(purchase : [(product: Product, quantity: Int)]) -> Double {
         let total = calculateSubtotal(purchase: purchase) + calculateDiscounts(purchase: purchase)
         return total
@@ -54,7 +55,6 @@ class Calculator {
                     }
                 }
             }
-            
         }
         return discount
     }
