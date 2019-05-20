@@ -12,6 +12,6 @@ import RxCocoa
 
 protocol CoordinatorProtocol: class {
     var navigationController: UINavigationController { get set }
-    
+
     func start()
 }

@@ -10,8 +10,8 @@ import Foundation
 
 class ProductsRequest: APIRequest {
     var method = RequestType.GET
-    var endPoint : String
-    
+    var endPoint: String
+
     init() {
         self.endPoint = NetworkConstants.EndPoint.products
     }

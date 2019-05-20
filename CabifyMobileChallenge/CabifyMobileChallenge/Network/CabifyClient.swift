@@ -13,7 +13,7 @@ class APIClient {
     func send<T: Codable>(apiRequest: APIRequest) -> Observable<T> {
         return Observable<T>.create { observer in
             let request = apiRequest.request(with: URL(string: NetworkConstants.baseUrl)!)
-            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            let task = URLSession.shared.dataTask(with: request) { (data, _, error) in
                 do {
                     let model: T = try JSONDecoder().decode(T.self, from: data ?? Data())
                     observer.onNext(model)
@@ -23,7 +23,7 @@ class APIClient {
                 observer.onCompleted()
             }
             task.resume()
-            
+
             return Disposables.create {
                 task.cancel()
             }

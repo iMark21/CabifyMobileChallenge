@@ -15,9 +15,9 @@ enum AppChildCoordinator {
 }
 
 class AppCoordinator: CoordinatorProtocol {
-    
+
     internal var navigationController: UINavigationController
-    
+
     private let window: UIWindow
     private var childCoordinators = [AppChildCoordinator: CoordinatorProtocol]()
     let disposeBag = DisposeBag()
@@ -28,11 +28,11 @@ class AppCoordinator: CoordinatorProtocol {
         navigationController.navigationBar.prefersLargeTitles = true
         self.window.rootViewController = navigationController
     }
-    
+
     func start() {
         startProductModule()
     }
-    
+
     func startProductModule() {
         let coordinator = ProductsCoordinator(navigationController: navigationController)
         childCoordinators[.productList] = coordinator

@@ -8,20 +8,20 @@
 
 import Foundation
 
-struct Products:Codable{
+struct Products: Codable {
     let products: [Product]
-    
-    private enum Codingkeys: String, CodingKey{
+
+    private enum Codingkeys: String, CodingKey {
         case products
     }
 }
 
-struct Product:Codable{
+struct Product: Codable {
     let code: String
     let name: String
     let price: Double
-    
-    private enum Codingkeys: String, CodingKey{
+
+    private enum Codingkeys: String, CodingKey {
         case code
         case name
         case price

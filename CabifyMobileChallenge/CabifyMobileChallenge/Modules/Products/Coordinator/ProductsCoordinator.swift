@@ -15,7 +15,7 @@ enum ProductsChildCoordinator {
 }
 
 class ProductsCoordinator: CoordinatorProtocol {
-    
+
     internal var navigationController: UINavigationController
     var finishModule: PublishSubject<Bool>
 
@@ -23,9 +23,9 @@ class ProductsCoordinator: CoordinatorProtocol {
         finishModule = PublishSubject<Bool>()
         self.navigationController = navigationController
     }
-    
+
     func start() {
-        if let viewController = ProductsViewController.instantiate(){
+        if let viewController = ProductsViewController.instantiate() {
             let repository = ProductsRepository.init()
             let calculator = Calculator.init()
             let viewModel =  ProductsViewModel.init(repository: repository, calculator: calculator)

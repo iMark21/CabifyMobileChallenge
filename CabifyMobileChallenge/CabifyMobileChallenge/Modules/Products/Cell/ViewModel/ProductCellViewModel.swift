@@ -12,28 +12,28 @@ import RxSwift
 
 class ProductCellViewModel {
     //input
-    let code : String
-    let name : String
-    let price : String
-    var quantity : Int
-    
+    let code: String
+    let name: String
+    let price: String
+    var quantity: Int
+
     //output
     var unitButtonTapped = PublishSubject<Int>()
-    
+
     init(product: Product) {
         code = product.code
         name = product.name
         price = String(format: "%.2f", product.price)
         quantity = 0
     }
-    
-    func addProduct(){
+
+    func addProduct() {
         quantity+=1
         unitButtonTapped.onNext(quantity)
     }
-    
-    func deleteProduct(){
-        if quantity > 0{
+
+    func deleteProduct() {
+        if quantity > 0 {
             quantity-=1
         }
         unitButtonTapped.onNext(quantity)
