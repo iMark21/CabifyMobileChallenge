@@ -1,4 +1,4 @@
-## Cabify Mobile Challenge | MVVM-RxSwift-Coordinator
+## Cabify Mobile Challenge | MVVM-RxSwift-Coordinator-StateView
 Implement an app where a user can pick products from a list and checkout them to get the resulting price, and see what discounts are applied. You should get the list of products from [here](https://api.myjson.com/bins/4bwec).
 
 ## MVVM
