@@ -35,8 +35,8 @@
 		D0A938EE22902A7D002E1F23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0A938ED22902A7D002E1F23 /* Assets.xcassets */; };
 		D0A938F122902A7D002E1F23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0A938EF22902A7D002E1F23 /* LaunchScreen.storyboard */; };
 		D0A938FC22902A7D002E1F23 /* CalculatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A938FB22902A7D002E1F23 /* CalculatorTest.swift */; };
-		D0B6EA3622907D05000A9935 /* CabifyRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B6EA3522907D05000A9935 /* CabifyRequest.swift */; };
-		D0B6EA3822907D16000A9935 /* CabifyClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B6EA3722907D15000A9935 /* CabifyClient.swift */; };
+		D0B6EA3622907D05000A9935 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B6EA3522907D05000A9935 /* APIRequest.swift */; };
+		D0B6EA3822907D16000A9935 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B6EA3722907D15000A9935 /* APIClient.swift */; };
 		D0B6EA3A22907F23000A9935 /* ProductsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B6EA3922907F23000A9935 /* ProductsRequest.swift */; };
 		D0B6EA3C2290860A000A9935 /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B6EA3B2290860A000A9935 /* NetworkConstants.swift */; };
 /* End PBXBuildFile section */
@@ -91,8 +91,8 @@
 		D0A938FD22902A7D002E1F23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D0A9390622902A7D002E1F23 /* CabifyMobileChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CabifyMobileChallengeUITests.swift; sourceTree = "<group>"; };
 		D0A9390822902A7D002E1F23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D0B6EA3522907D05000A9935 /* CabifyRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CabifyRequest.swift; sourceTree = "<group>"; };
-		D0B6EA3722907D15000A9935 /* CabifyClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CabifyClient.swift; sourceTree = "<group>"; };
+		D0B6EA3522907D05000A9935 /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
+		D0B6EA3722907D15000A9935 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		D0B6EA3922907F23000A9935 /* ProductsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsRequest.swift; sourceTree = "<group>"; };
 		D0B6EA3B2290860A000A9935 /* NetworkConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstants.swift; sourceTree = "<group>"; };
 		E19875E6C19A53AECCBA7123 /* Pods-CabifyMobileChallenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CabifyMobileChallenge.debug.xcconfig"; path = "Target Support Files/Pods-CabifyMobileChallenge/Pods-CabifyMobileChallenge.debug.xcconfig"; sourceTree = "<group>"; };
@@ -411,8 +411,8 @@
 		D0B6EA3322907371000A9935 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				D0B6EA3522907D05000A9935 /* CabifyRequest.swift */,
-				D0B6EA3722907D15000A9935 /* CabifyClient.swift */,
+				D0B6EA3722907D15000A9935 /* APIClient.swift */,
+				D0B6EA3522907D05000A9935 /* APIRequest.swift */,
 				D0B6EA3922907F23000A9935 /* ProductsRequest.swift */,
 				D0B6EA3B2290860A000A9935 /* NetworkConstants.swift */,
 			);
@@ -642,8 +642,8 @@
 				D0A006C522909FD100A3473D /* ProductTableViewCell.swift in Sources */,
 				D0A006BA22909DEB00A3473D /* Storyboarded.swift in Sources */,
 				D0A006ED2291FA1800A3473D /* Calculator.swift in Sources */,
-				D0B6EA3622907D05000A9935 /* CabifyRequest.swift in Sources */,
-				D0B6EA3822907D16000A9935 /* CabifyClient.swift in Sources */,
+				D0B6EA3622907D05000A9935 /* APIRequest.swift in Sources */,
+				D0B6EA3822907D16000A9935 /* APIClient.swift in Sources */,
 				D0A006CE2290BF7900A3473D /* ErrorViewController.swift in Sources */,
 				B835665F2292C12600661813 /* Products.swift in Sources */,
 				D0A006D12290C07B00A3473D /* UIViewController+extensions.swift in Sources */,

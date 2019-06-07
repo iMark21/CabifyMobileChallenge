@@ -7,26 +7,19 @@
 //
 
 import UIKit
-import RxCocoa
-import RxSwift
-
-enum ProductsChildCoordinator {
-    case result
-}
 
 class ProductsCoordinator: CoordinatorProtocol {
-
-    internal var navigationController: UINavigationController
-    var finishModule: PublishSubject<Bool>
+    
+    var navigationController: UINavigationController
 
     init(navigationController: UINavigationController) {
-        finishModule = PublishSubject<Bool>()
         self.navigationController = navigationController
     }
 
     func start() {
         if let viewController = ProductsViewController.instantiate() {
-            let repository = ProductsRepository.init()
+            let apiClient = APIClient.init()
+            let repository = ProductsRepository.init(apiClient: apiClient)
             let calculator = Calculator.init()
             let viewModel =  ProductsViewModel.init(repository: repository, calculator: calculator)
             viewController.viewModel = viewModel

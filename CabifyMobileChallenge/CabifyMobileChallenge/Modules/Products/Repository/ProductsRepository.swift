@@ -11,8 +11,15 @@ import RxSwift
 import RxCocoa
 
 class ProductsRepository {
+    
+    var apiClient: APIClient
+    
+    init(apiClient: APIClient) {
+        self.apiClient = apiClient
+    }
+    
     func fetchProducts() -> Observable<Products> {
-        return APIClient().send(apiRequest: ProductsRequest.init())
+        return apiClient.send(apiRequest: ProductsRequest.init(method: .GET))
     }
     func fetchPromotions()  -> Observable<[Promotion]> {
         //This content will be provider from server
