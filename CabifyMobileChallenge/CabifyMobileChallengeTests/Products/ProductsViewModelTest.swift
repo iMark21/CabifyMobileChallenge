@@ -71,29 +71,6 @@ class ProductsViewModelTest: XCTestCase {
 
 
     }
-    
-
-    func testProperlyAssigned() {
-        //Given products build cellviewmodels
-//        let viewCellModels = viewModel.buildCellViewModels(data: products)
-
-        for rowViewModel in cellViewModels{
-            let promotionsToApply = viewModel.getPromotions(promotions: promotions, rowViewModel: rowViewModel)
-            //Check is productCodeToApply is the correct one
-            for promotion in promotionsToApply {
-                XCTAssertEqual(promotion.productCodeApply, rowViewModel.code)
-            }
-        }
-    }
-    
-    func correctAssignPromotions() {
-        //Given products build tuples for calculator
-//        let viewCellModels = viewModel.buildCellViewModels(data: products)
-//        let tuples = viewModel.buildTuplesForCalculator(viewModels: viewCellModels)
-//
-//        //Then compare if number of items is the same
-//        XCTAssertEqual(viewCellModels.count, tuples.count)
-    }
 
     func testStateSubscribeOnNext() {
         let state = viewModel.state

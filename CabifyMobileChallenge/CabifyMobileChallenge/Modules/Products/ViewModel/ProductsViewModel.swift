@@ -17,76 +17,94 @@ enum ProductsViewState {
     case loaded ([ProductCellViewModel])
 }
 
-class ProductsViewModel {
-    private let repository: ProductsRepository
-    private let calculator: Calculator
-    private let disposeBag = DisposeBag()
-    private var viewModels: [ProductCellViewModel]
-    private var promotions: [Promotion]
+protocol ProductsViewModelProtocol {
+    var repository: ProductsRepository { get }
+    var calculator: Calculator { get }
+    
+    var state : PublishSubject<ProductsViewState> { get }
+    
+    func requestData()
+    func getTotalString() -> String
+    func getSubtotalString() -> String
+    func getDiscountString() -> String
+}
 
-    //input
+class ProductsViewModel : ProductsViewModelProtocol {
+    
+    var repository: ProductsRepository
+    var calculator: Calculator
+    
+    let disposeBag = DisposeBag()
+    private var productCellViewModel: [ProductCellViewModel]
+    private var promotions: [Promotion]
+    
+    // MARK: Input
+    
     init(repository: ProductsRepository, calculator: Calculator) {
         self.repository = repository
         self.calculator = calculator
-        viewModels = [ProductCellViewModel]()
+        productCellViewModel = [ProductCellViewModel]()
         promotions = [Promotion]()
     }
-
+    
     func requestData() {
         state.onNext(.loading)
         resetCalculate()
         repository.fetchProducts()
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { (products : Products) in
-                self.viewModels = self.buildCellViewModels(data: products)
+            .flatMap({ (products) -> Observable<[ProductCellViewModel]> in
+                return self.buildCellViewModels(data: products)
+            }).subscribe(onNext: { (cellViewModels) in
+                self.productCellViewModel = cellViewModels
             }, onError: { (error) in
                 self.state.onNext(.error)
             }, onCompleted: {
                 self.repository.fetchPromotions()
-                    .observeOn(MainScheduler.instance)
-                    .subscribe(onNext: { (result) in
-                        self.promotions = result
+                    .flatMap({ (promotions) -> Observable<[Promotion]> in
+                        self.promotions = promotions
+                        return Observable.just(promotions)
+                    }).subscribe(onNext: { (_) in
+                        self.state.onNext(.loaded(self.productCellViewModel))
                     }, onError: { (error) in
                         self.state.onNext(.error)
-                    }, onCompleted: {
-                        self.state.onNext(.loaded(self.viewModels))
                     }).disposed(by: self.disposeBag)
             }).disposed(by: disposeBag)
     }
-
-    //output
+    
+    // MARK: Output
+    
     var state = PublishSubject<ProductsViewState>()
-
+    
     func getTotalString() -> String {
-        let total = calculator.calculateTotal(purchase: buildTuplesForCalculator(viewModels: viewModels))
+        let total = calculator.calculateTotal(purchase: buildTuplesForCalculator(viewModels: productCellViewModel))
         return NSLocalizedString("_total_", comment: "") + ": " + String(format: "%.2f", total)
     }
-
+    
     func getSubtotalString () -> String {
         return NSLocalizedString("_subtotal_", comment: "") +
             ": " +
             String(format: "%.2f",
-                   calculator.calculateSubtotal(purchase: buildTuplesForCalculator(viewModels: viewModels)))
+                   calculator.calculateSubtotal(purchase: buildTuplesForCalculator(viewModels: productCellViewModel)))
     }
-
+    
     func getDiscountString() -> String {
         return NSLocalizedString("_discount_", comment: "") +
             ": " +
             String(format: "%.2f",
-                   calculator.calculateDiscounts(purchase: buildTuplesForCalculator(viewModels: viewModels)))
+                   calculator.calculateDiscounts(purchase: buildTuplesForCalculator(viewModels: productCellViewModel)))
     }
-
-    // MARK: ViewModel comunicative methods
-
-    func buildCellViewModels(data: Products) -> [ProductCellViewModel] {
+    
+    // MARK: ViewModel Map Methods
+    
+    private func buildCellViewModels(data: Products) -> Observable <[ProductCellViewModel]> {
         var viewModels = [ProductCellViewModel]()
         for product in data.products {
             viewModels.append(ProductCellViewModel.init(product: product))
         }
-        return viewModels
+        return Observable.just(viewModels)
     }
-
-    func buildTuplesForCalculator (viewModels: [ProductCellViewModel]) -> [(product: Product, quantity: Int)] {
+    
+    private func buildTuplesForCalculator (viewModels: [ProductCellViewModel]) -> [(product: Product, quantity: Int)] {
         var result = [(product: Product, quantity: Int)]()
         for rowViewModel in viewModels {
             let price = Double(rowViewModel.price)
@@ -100,20 +118,20 @@ class ProductsViewModel {
         return result
     }
     
-    func getPromotions(promotions: [Promotion], rowViewModel: ProductCellViewModel) -> [Promotion] {
+    private func getPromotions(promotions: [Promotion], rowViewModel: ProductCellViewModel) -> [Promotion] {
         return promotions.filter { $0.productCodeApply.elementsEqual(rowViewModel.code) }
     }
-
+    
     // MARK: Calculator engine
-
+    
     func resetCalculate() {
-        viewModels = [ProductCellViewModel]()
+        productCellViewModel = [ProductCellViewModel]()
     }
-
+    
     func resetQuantities() {
-        for rowViewModel in viewModels {
+        for rowViewModel in productCellViewModel {
             rowViewModel.quantity = 0
         }
-        self.state.onNext(.loaded(viewModels))
+        self.state.onNext(.loaded(productCellViewModel))
     }
 }
